@@ -101,18 +101,18 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.floating,         -- 1
+    awful.layout.suit.tile,             -- 2
+    awful.layout.suit.tile.left,        -- 3
+    awful.layout.suit.tile.bottom,      -- 4
+    awful.layout.suit.tile.top,         -- 5
+    awful.layout.suit.fair,             -- 6
+    awful.layout.suit.fair.horizontal,  -- 7
+    awful.layout.suit.max,              -- 8
+    awful.layout.suit.max.fullscreen,   -- 9
+    awful.layout.suit.magnifier         -- 10
+--    awful.layout.suit.spiral,
+--    awful.layout.suit.spiral.dwindle,
 }
 -- }}}
 
@@ -126,10 +126,16 @@ end
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
+tagdefs = {
+    name = {"edit", "edit2", "www", "irc", "mail", 6, 7, 8, "log"},
+    layout = {layouts[2], layouts[2], layouts[9], layouts[1], layouts[9],
+              layouts[1], layouts[1], layouts[1], layouts[2]}
+          }
+
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag(tagdefs.name, s, tagdefs.layout)
 end
 -- }}}
 
@@ -589,9 +595,12 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][3] } },
+    { rule = { class = "XConsole" },
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Evolution" },
+      properties = { tag = tags[1][5] } },
 }
 -- }}}
 
@@ -667,3 +676,6 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+--awful.util.spawn_with_shell("firefox")
+--awful.util.spawn_with_shell("xterm")
