@@ -495,7 +495,9 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end,"Run lua command"),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+    -- Marquiz's additions
+    awful.key({ modkey,           }, "F12",     function () awful.util.spawn("xscreensaver-command --lock") end)
 )
 
 clientkeys = awful.util.table.join(
