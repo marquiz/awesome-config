@@ -522,7 +522,10 @@ globalkeys = awful.util.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Marquiz's additions
+    awful.key({ modkey }, "F12", function () awful.util.spawn("xscreensaver-command --lock") end,
+              {description = "lock screen", group = "awesome"})
 )
 
 clientkeys = awful.util.table.join(
