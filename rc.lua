@@ -82,8 +82,8 @@ end
 -- Define a tag table which hold all screen tags.
 tagdefs = {
     name = {"edit", "edit2", "www", "irc", "mail", 6, 7, 8, "log"},
-    layout = {layouts[2], layouts[2], layouts[9], layouts[1], layouts[9],
-              layouts[1], layouts[1], layouts[1], layouts[2]}
+    layout = {layouts[4], layouts[4], layouts[9], layouts[1], layouts[9],
+              layouts[4], layouts[4], layouts[1], layouts[2]}
           }
 
 tags = {}
