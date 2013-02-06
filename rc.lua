@@ -295,13 +295,13 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 local tagdefs = {
     name = {"edit", "edit2", "www", "irc", "mail", 6, 7, 8, "log"},
-    layout = {awful.layout.suit.tile,
-              awful.layout.suit.tile,
+    layout = {awful.layout.suit.tile.bottom,
+              awful.layout.suit.tile.bottom,
               awful.layout.suit.max.fullscreen,
               awful.layout.suit.floating,
               awful.layout.suit.max.fullscreen,
-              awful.layout.suit.floating,
-              awful.layout.suit.floating,
+              awful.layout.suit.tile.bottom,
+              awful.layout.suit.tile.bottom,
               awful.layout.suit.floating,
               awful.layout.suit.tile}
 }
