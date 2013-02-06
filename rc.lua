@@ -426,13 +426,36 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end,"Increase window size"),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end,"Decrease window size"),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end,"Increase master"),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end,"Decrease master"),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end,"Increase column"),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end,"Decrease column"),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end,"Cycle layout style forward"),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end,"Cycle layout style reverse"),
-
+    awful.key({ modkey, "Shift"   }, "h",
+        function ()
+            awful.tag.incnmaster( 1)
+            naughty.notify({ title = '# Masters', text = tostring(awful.tag.getnmaster()), timeout = 1 })
+        end,"Increase master"),
+    awful.key({ modkey, "Shift"   }, "l",
+        function ()
+            awful.tag.incnmaster(-1)
+            naughty.notify({ title = '# Masters', text = tostring(awful.tag.getnmaster()), timeout = 1 })
+        end,"Decrease master"),
+    awful.key({ modkey, "Control" }, "h",
+        function ()
+            awful.tag.incncol( 1)
+            naughty.notify({ title = '# Columns', text = tostring(awful.tag.getncol()), timeout = 1 })
+        end,"Increase column"),
+    awful.key({ modkey, "Control" }, "l",
+        function ()
+            awful.tag.incncol(-1)
+            naughty.notify({ title = '# Columns', text = tostring(awful.tag.getncol()), timeout = 1 })
+        end,"Decrease column"),
+    awful.key({ modkey,           }, "space",
+        function ()
+            awful.layout.inc(layouts,  1)
+            naughty.notify({ title = 'Layout', text = awful.layout.getname(), timeout = 1 })
+        end,"Cycle layout style forward"),
+    awful.key({ modkey, "Shift"   }, "space",
+        function ()
+            awful.layout.inc(layouts, -1)
+            naughty.notify({ title = 'Layout', text = awful.layout.getname(), timeout = 1 })
+        end,"Cycle layout style reverse"),
     awful.key({ modkey, "Control" }, "n", awful.client.restore,"Client restore"),
 
     -- Prompt
