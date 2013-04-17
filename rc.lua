@@ -71,11 +71,26 @@ layouts =
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
+tagconf = {
+    {"edit", layouts[4]},
+    {"edit2", layouts[4]},
+    {"www", layouts[9]},
+    {"irc", layouts[1]},
+    {"mail", layouts[9]},
+    {6, layouts[4]},
+    {7, layouts[4]},
+    {"virt", layouts[10]},
+    {"log", layouts[4]}
+        }
+
 tagdefs = {
-    name = {"edit", "edit2", "www", "irc", "mail", 6, 7, 8, "log"},
-    layout = {layouts[4], layouts[4], layouts[9], layouts[1], layouts[9],
-              layouts[4], layouts[4], layouts[1], layouts[2]}
-          }
+    name = {},
+    layout = {}
+}
+for t = 1, table.getn(tagconf) do
+    tagdefs.name[t] = tagconf[t][1]
+    tagdefs.layout[t] = tagconf[t][2]
+end
 
 tags = {}
 for s = 1, screen.count() do
