@@ -293,25 +293,32 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-local tagdefs = {
-    name = {"edit", "edit2", "www", "irc", "mail", 6, 7, 8, "log"},
-    layout = {awful.layout.suit.tile.bottom,
-              awful.layout.suit.tile.bottom,
-              awful.layout.suit.max.fullscreen,
-              awful.layout.suit.floating,
-              awful.layout.suit.max.fullscreen,
-              awful.layout.suit.tile.bottom,
-              awful.layout.suit.tile.bottom,
-              awful.layout.suit.floating,
-              awful.layout.suit.tile}
+local tagconf = {
+    {"edit",    awful.layout.suit.tile.bottom},
+    {"edit2",   awful.layout.suit.tile.bottom},
+    {"www",     awful.layout.suit.max.fullscreen},
+    {"irc",     awful.layout.suit.floating},
+    {"mail",    awful.layout.suit.max.fullscreen},
+    {6,         awful.layout.suit.tile.bottom},
+    {7,         awful.layout.suit.tile.bottom},
+    {"virt",    awful.layout.suit.magnifier},
+    {"log",     awful.layout.suit.tile.bottom},
 }
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
+    -- Just convert to a more suitable format for awful.tag() API
+    local names = {}
+    local layouts = {}
+    for t = 1, #tagconf do
+        names[t] = tagconf[t][1]
+        layouts[t] = tagconf[t][2]
+    end
+
     -- Each screen has its own tag table.
-    awful.tag(tagdefs.name, s, tagdefs.layout)
+    awful.tag(names, s, layouts)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
