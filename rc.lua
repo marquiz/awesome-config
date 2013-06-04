@@ -302,15 +302,15 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 local tagconf = {
     {
-        {"edit",    awful.layout.suit.tile.bottom,      3},
-        {"edit2",   awful.layout.suit.tile.bottom,      3},
-        {"edit3",   awful.layout.suit.tile.bottom,      3},
-        {"edit4",   awful.layout.suit.tile.bottom,      3},
-        {"mail",    awful.layout.suit.max.fullscreen,   3},
-        {6,         awful.layout.suit.tile.bottom,      3},
-        {7,         awful.layout.suit.tile.bottom,      3},
-        {"virt",    awful.layout.suit.tile.bottom,      3},
-        {"log",     awful.layout.suit.tile.bottom,      3},
+        {"edit",    awful.layout.suit.tile.bottom,      2},
+        {"edit2",   awful.layout.suit.tile.bottom,      2},
+        {"www",     awful.layout.suit.max.fullscreen,   2},
+        {"irc",     awful.layout.suit.max.fullscreen,   2},
+        {5,         awful.layout.suit.tile.bottom,      2},
+        {6,         awful.layout.suit.tile.bottom,      2},
+        {7,         awful.layout.suit.tile.bottom,      2},
+        {8,         awful.layout.suit.tile.bottom,      2},
+        {"log",     awful.layout.suit.tile.bottom,      2},
     },
     {
         {"irc",     awful.layout.suit.floating,         1},
