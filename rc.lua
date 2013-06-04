@@ -123,11 +123,11 @@ tagconf = {
     {"edit", layouts[4]},
     {"edit2", layouts[4]},
     {"www", layouts[9]},
-    {"irc", layouts[1]},
-    {"mail", layouts[9]},
+    {"irc", layouts[9]},
+    {5, layouts[4]},
     {6, layouts[4]},
     {7, layouts[4]},
-    {"virt", layouts[10]},
+    {8, layouts[4]},
     {"log", layouts[4]}
         }
 
