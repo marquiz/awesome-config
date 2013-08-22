@@ -294,30 +294,47 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 local tagconf = {
-    {"edit",    awful.layout.suit.tile.bottom},
-    {"edit2",   awful.layout.suit.tile.bottom},
-    {"www",     awful.layout.suit.max.fullscreen},
-    {"irc",     awful.layout.suit.floating},
-    {"mail",    awful.layout.suit.max.fullscreen},
-    {6,         awful.layout.suit.tile.bottom},
-    {7,         awful.layout.suit.tile.bottom},
-    {"virt",    awful.layout.suit.magnifier},
-    {"log",     awful.layout.suit.tile.bottom},
+    {
+        {"edit",    awful.layout.suit.tile.bottom},
+        {"edit2",   awful.layout.suit.tile.bottom},
+        {"www",     awful.layout.suit.max.fullscreen},
+        {"edit3",   awful.layout.suit.floating},
+        {"mail",    awful.layout.suit.max.fullscreen},
+        {6,         awful.layout.suit.tile.bottom},
+        {7,         awful.layout.suit.tile.bottom},
+        {"virt",    awful.layout.suit.magnifier},
+        {"log",     awful.layout.suit.tile.bottom},
+    },
+    {
+        {"1",       awful.layout.suit.tile.bottom},
+        {"2",       awful.layout.suit.tile.bottom},
+        {"3",       awful.layout.suit.max.fullscreen},
+        {"irc",     awful.layout.suit.floating},
+        {"mail",    awful.layout.suit.max.fullscreen},
+        {6,         awful.layout.suit.tile.bottom},
+        {7,         awful.layout.suit.tile.bottom},
+        {"8",       awful.layout.suit.magnifier},
+        {"9",       awful.layout.suit.tile.bottom},
+    },
 }
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
+    -- Each screen may have its own tagdefs -- if not, use tagdefs[1] as default
+    index = 1
+    if s.index <= #tagconf then
+        index = s.index
+    end
     -- Just convert to a more suitable format for awful.tag() API
-    local names = {}
-    local layouts = {}
-    for t = 1, #tagconf do
-        names[t] = tagconf[t][1]
-        layouts[t] = tagconf[t][2]
+    names = {}
+    layouts = {}
+    for t = 1, #tagconf[index] do
+        names[t] = tagconf[index][t][1]
+        layouts[t] = tagconf[index][t][2]
     end
 
-    -- Each screen has its own tag table.
     awful.tag(names, s, layouts)
 
     -- Create a promptbox for each screen
