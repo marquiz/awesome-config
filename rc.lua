@@ -337,6 +337,11 @@ awful.screen.connect_for_each_screen(function(s)
 
     awful.tag(names, s, layouts)
 
+    -- Set number of master windows for all tags
+    for _, t in pairs(s.tags) do
+        awful.tag.setnmaster(2, t)
+    end
+
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
