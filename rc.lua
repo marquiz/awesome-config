@@ -647,6 +647,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
       properties = { tag = tags[1][5] } },
+    { rule = { class = "VirtualBox" },
+      properties = { floating = true } },
 }
 -- }}}
 
