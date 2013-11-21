@@ -167,6 +167,9 @@ for s = 1, screen.count() do
         index = 1
     end
     tags[s] = awful.tag(tagdefs[index].name, s, tagdefs[index].layout)
+    for t = 1, table.getn(tags[s]) do
+        awful.tag.setnmaster(2, tags[s][t])
+    end
 end
 -- }}}
 
