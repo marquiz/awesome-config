@@ -663,7 +663,7 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][3], floating = true } },
     { rule = { class = "XConsole" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
