@@ -723,7 +723,7 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = true }
     },
     { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "www" } },
+      properties = { screen = 1, tag = "www", floating = true } },
     { rule = { class = "XConsole" },
       properties = { screen = 1, tag = "9" } },
     { rule = { class = "Evolution" },
