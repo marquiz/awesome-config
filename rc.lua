@@ -146,12 +146,12 @@ tagconf =
 }
 
 tagdefs = { }
-for s = 1, table.getn(tagconf) do
+for s = 1, #tagconf do
     tagdefs[s] = {
         name = {},
         layout = {}
     }
-    for t = 1, table.getn(tagconf[s]) do
+    for t = 1, #tagconf[s] do
         tagdefs[s].name[t] = tagconf[s][t][1]
         tagdefs[s].layout[t] = tagconf[s][t][2]
     end
@@ -161,13 +161,13 @@ tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
     -- Each screen may have its own tagdefs -- if not, use tagdefs[1] as default
-    if s <= table.getn(tagdefs) then
+    if s <= #tagdefs then
         index = s
     else
         index = 1
     end
     tags[s] = awful.tag(tagdefs[index].name, s, tagdefs[index].layout)
-    for t = 1, table.getn(tags[s]) do
+    for t = 1, #tags[s] do
         awful.tag.setnmaster(2, tags[s][t])
     end
 end
@@ -645,7 +645,7 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][3], floating = true } },
     { rule = { class = "XConsole" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
