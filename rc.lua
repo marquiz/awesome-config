@@ -71,31 +71,57 @@ layouts =
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tagconf = {
-    {"edit", layouts[4]},
-    {"edit2", layouts[4]},
-    {"www", layouts[9]},
-    {"irc", layouts[9]},
-    {5, layouts[4]},
-    {6, layouts[4]},
-    {7, layouts[4]},
-    {8, layouts[4]},
-    {"log", layouts[4]}
-        }
-
-tagdefs = {
-    name = {},
-    layout = {}
+tagconf =
+{
+    {
+        {"edit", layouts[4]},
+        {"edit2", layouts[4]},
+        {"www", layouts[9]},
+        {"edit3", layouts[1]},
+        {"mail", layouts[9]},
+        {6, layouts[4]},
+        {7, layouts[4]},
+        {"virt", layouts[10]},
+        {"log", layouts[4]}
+    },
+    {
+        {1, layouts[4]},
+        {2, layouts[4]},
+        {3, layouts[9]},
+        {"irc", layouts[1]},
+        {"mail", layouts[9]},
+        {6, layouts[4]},
+        {7, layouts[4]},
+        {8, layouts[10]},
+        {9, layouts[4]}
+    }
 }
-for t = 1, table.getn(tagconf) do
-    tagdefs.name[t] = tagconf[t][1]
-    tagdefs.layout[t] = tagconf[t][2]
+
+tagdefs = { }
+for s = 1, #tagconf do
+    tagdefs[s] = {
+        name = {},
+        layout = {}
+    }
+    for t = 1, #tagconf[s] do
+        tagdefs[s].name[t] = tagconf[s][t][1]
+        tagdefs[s].layout[t] = tagconf[s][t][2]
+    end
 end
 
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tagdefs.name, s, tagdefs.layout)
+    -- Each screen may have its own tagdefs -- if not, use tagdefs[1] as default
+    if s <= #tagdefs then
+        index = s
+    else
+        index = 1
+    end
+    tags[s] = awful.tag(tagdefs[index].name, s, tagdefs[index].layout)
+    for t = 1, #tags[s] do
+        awful.tag.setnmaster(2, tags[s][t])
+    end
 end
 -- }}}
 
@@ -387,11 +413,13 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][3], floating = true } },
     { rule = { class = "XConsole" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
       properties = { tag = tags[1][5] } },
+    { rule = { class = "VirtualBox" },
+      properties = { floating = true } },
 }
 -- }}}
 
