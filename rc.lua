@@ -272,7 +272,7 @@ vicious.register(myweatherwidget, vicious.widgets.weather,
 
     kbdcfg = {}
     kbdcfg.cmd = "setxkbmap"
-    kbdcfg.layout = { { "us", "" }, { "de", "" } }
+    kbdcfg.layout = { { "fi", "" }, { "us", "" } }
     kbdcfg.current = 1  -- us is our default layout
     kbdcfg.widget = widget({ type = "textbox", align = "right" })
     kbdcfg.widget.text = " " .. kbdcfg.layout[kbdcfg.current][1] .. " "
