@@ -277,7 +277,7 @@ vicious.register(myweatherwidget, vicious.widgets.weather,
 
 kbdcfg = {}
 kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "us", "" } }
+kbdcfg.layout = { { "fi", "" }, { "us", "" } }
 kbdcfg.current = 1  -- us is our default layout
 kbdcfg.widget = wibox.widget.textbox()
 kbdcfg.widget.set_align = "right"
