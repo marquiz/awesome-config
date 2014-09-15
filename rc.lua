@@ -298,7 +298,7 @@ local tagconf = {
         {"edit",    awful.layout.suit.tile.bottom},
         {"edit2",   awful.layout.suit.tile.bottom},
         {"www",     awful.layout.suit.max.fullscreen},
-        {"edit3",   awful.layout.suit.floating},
+        {"edit3",   awful.layout.suit.tile.bottom},
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
         {7,         awful.layout.suit.tile.bottom},
