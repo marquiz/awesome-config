@@ -132,7 +132,7 @@ tagconf =
         {"edit", layouts[4]},
         {"edit2", layouts[4]},
         {"www", layouts[9]},
-        {"edit3", layouts[1]},
+        {"edit3", layouts[4]},
         {"mail", layouts[9]},
         {6, layouts[4]},
         {7, layouts[4]},
