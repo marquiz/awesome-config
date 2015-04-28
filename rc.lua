@@ -500,6 +500,7 @@ awful.rules.rules = {
           "Arandr",
           "Blueman-manager",
           "Firefox",
+          "Gitk",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
