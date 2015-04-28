@@ -640,6 +640,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][5] } },
     { rule = { class = "VirtualBox" },
       properties = { floating = true } },
+    { rule = { class = "Gitk" },
+      properties = { floating = true } },
 }
 -- }}}
 
