@@ -699,6 +699,7 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
+          "Gitk",
           "Gpick",
           "Kruler",
           "MessageWin",  -- kalarm.
