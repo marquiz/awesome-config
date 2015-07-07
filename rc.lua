@@ -654,6 +654,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Gitk" },
       properties = { floating = true } },
+    { rule = { class = "Meld" },
+      properties = { floating = true } },
 }
 -- }}}
 
