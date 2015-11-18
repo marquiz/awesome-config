@@ -14,6 +14,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+-- Extra widgets
+local vicious = require("vicious")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -108,6 +110,13 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+
+-- Volume widget
+myvolumewidget = wibox.widget.textbox()
+vicious.register(myvolumewidget, vicious.widgets.volume,
+  function(widget, args)
+    return "Vol: " .. args[1] .. "%"
+  end, 2, "Master")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -218,6 +227,12 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
+
+            myvolumewidget,
+            spacer,
+            separator,
+            spacer,
+
             s.mylayoutbox,
         },
     }
