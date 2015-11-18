@@ -265,6 +265,13 @@ vicious.register(myweatherwidget, vicious.widgets.weather,
                 --'EDDN': Nuernberg ICAO code.
 
 
+-- Volume widget
+myvolumewidget = widget({ type = "textbox"})
+vicious.register(myvolumewidget, vicious.widgets.volume,
+  function(widget, args)
+    return "Vol: " .. args[1] .. "%"
+  end, 2, "Master")
+
 -- Keyboard map indicator and changer
 -- https://awesome.naquadah.org/wiki/Change_keyboard_maps
 -- default keyboard is us, second is german adapt to your needs
@@ -397,6 +404,11 @@ for s = 1, screen.count() do
         -- spacer,
 
         myweatherwidget,
+        spacer,
+        separator,
+        spacer,
+
+        myvolumewidget,
         spacer,
         separator,
         spacer,
