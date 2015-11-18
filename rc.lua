@@ -213,6 +213,13 @@ vicious.register(myweatherwidget, vicious.widgets.weather,
           --'EDDN': Nuernberg ICAO code.
 
 
+-- Volume widget
+myvolumewidget = wibox.widget.textbox()
+vicious.register(myvolumewidget, vicious.widgets.volume,
+  function(widget, args)
+    return "Vol: " .. args[1] .. "%"
+  end, 2, "Master")
+
 -- Keyboard map indicator and changer
 -- default keyboard is us, second is german adapt to your needs
 --
@@ -398,6 +405,12 @@ awful.screen.connect_for_each_screen(function(s)
             spacer,
             separator,
             spacer,
+
+            myvolumewidget,
+            spacer,
+            separator,
+            spacer,
+
             s.mylayoutbox,
         },
     }
