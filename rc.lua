@@ -715,6 +715,7 @@ awful.rules.rules = {
           "Gitk",
           "Gpick",
           "Kruler",
+          "libreoffice",
           "Meld",
           "MessageWin",  -- kalarm.
           "Sxiv",
