@@ -96,7 +96,7 @@ theme.icon_theme = 'Adwaita'
 -- If you do not like this or do not have such a key,
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
+modkey = "Mod1"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
@@ -127,30 +127,44 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tagconf = {
-    {"edit", layouts[4]},
-    {"edit2", layouts[4]},
-    {"www", layouts[9]},
-    {"irc", layouts[9]},
-    {5, layouts[4]},
-    {6, layouts[4]},
-    {7, layouts[4]},
-    {8, layouts[4]},
-    {"log", layouts[4]}
-        }
-
-tagdefs = {
-    name = {},
-    layout = {}
+    {
+        {"edit", layouts[4]},
+        {"edit2", layouts[4]},
+        {"www", layouts[9]},
+        {"irc", layouts[9]},
+        {5, layouts[4]},
+        {6, layouts[4]},
+        {7, layouts[4]},
+        {8, layouts[4]},
+        {"log", layouts[4]}
+    }
 }
-for t = 1, #tagconf do
-    tagdefs.name[t] = tagconf[t][1]
-    tagdefs.layout[t] = tagconf[t][2]
+
+tagdefs = { }
+for s = 1, #tagconf do
+    tagdefs[s] = {
+        name = {},
+        layout = {}
+    }
+    for t = 1, #tagconf[s] do
+        tagdefs[s].name[t] = tagconf[s][t][1]
+        tagdefs[s].layout[t] = tagconf[s][t][2]
+    end
 end
 
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tagdefs.name, s, tagdefs.layout)
+    -- Each screen may have its own tagdefs -- if not, use tagdefs[1] as default
+    if s <= #tagdefs then
+        index = s
+    else
+        index = 1
+    end
+    tags[s] = awful.tag(tagdefs[index].name, s, tagdefs[index].layout)
+    for t = 1, #tags[s] do
+        awful.tag.setnmaster(2, tags[s][t])
+    end
 end
 -- }}}
 
@@ -251,7 +265,7 @@ vicious.register(myweatherwidget, vicious.widgets.weather,
 
 kbdcfg = {}
 kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "us", "" } }
+kbdcfg.layout = { { "fi", "" }, { "us", "" } }
 kbdcfg.current = 1  -- us is our default layout
 kbdcfg.widget = wibox.widget.textbox()
 kbdcfg.widget.set_align = "right"
@@ -637,11 +651,17 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][3], floating = true } },
     { rule = { class = "XConsole" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
       properties = { tag = tags[1][5] } },
+    { rule = { class = "VirtualBox" },
+      properties = { floating = true } },
+    { rule = { class = "Gitk" },
+      properties = { floating = true } },
+    { rule = { class = "Meld" },
+      properties = { floating = true } },
 }
 -- }}}
 
