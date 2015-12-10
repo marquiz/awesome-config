@@ -248,10 +248,17 @@ vicious.register(myweatherwidget, vicious.widgets.weather,
                 function (widget, args)
                     weather_t:set_text("City: " .. args["{city}"] .."\nWind: " .. args["{windkmh}"] .. "km/h " .. args["{wind}"] .. "\nSky: " .. args["{sky}"] .. "\nHumidity: " .. args["{humid}"] .. "%")
                     return args["{tempc}"] .. "C"
-                end, 1800, "EDDN")
+                end, 1800, "EFHK")
                 --'1800': check every 30 minutes.
                 --'EDDN': Nuernberg ICAO code.
 
+
+-- Volume widget
+myvolumewidget = widget({ type = "textbox"})
+vicious.register(myvolumewidget, vicious.widgets.volume,
+  function(widget, args)
+    return "Vol: " .. args[1] .. "%"
+  end, 2, "Master")
 
 -- Keyboard map indicator and changer
 -- https://awesome.naquadah.org/wiki/Change_keyboard_maps
@@ -385,6 +392,11 @@ for s = 1, screen.count() do
         -- spacer,
 
         myweatherwidget,
+        spacer,
+        separator,
+        spacer,
+
+        myvolumewidget,
         spacer,
         separator,
         spacer,
@@ -643,6 +655,8 @@ awful.rules.rules = {
     { rule = { class = "Gitk" },
       properties = { floating = true } },
     { rule = { class = "Meld" },
+      properties = { floating = true } },
+    { rule = { class = "libreoffice" },
       properties = { floating = true } },
 }
 -- }}}
