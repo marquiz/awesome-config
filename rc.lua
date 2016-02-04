@@ -676,6 +676,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "libreoffice" },
       properties = { floating = true } },
+    { rule = { class = "rdesktop" },
+      properties = { floating = true } },
 }
 -- }}}
 
