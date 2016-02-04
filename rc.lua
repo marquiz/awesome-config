@@ -521,6 +521,7 @@ awful.rules.rules = {
           "libreoffice",
           "Meld",
           "MessageWin",  -- kalarm.
+          "rdesktop",
           "Sxiv",
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
