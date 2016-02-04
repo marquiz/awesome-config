@@ -721,6 +721,7 @@ awful.rules.rules = {
           "Sxiv",
           "Wpa_gui",
           "pinentry",
+          "rdesktop",
           "veromix",
           "VirtualBox",
           "xtightvncviewer"},
