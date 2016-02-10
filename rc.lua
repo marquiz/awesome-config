@@ -591,7 +591,19 @@ globalkeys = awful.util.table.join(
               {description = "show the menubar", group = "launcher"}),
     -- Marquiz's additions
     awful.key({ modkey }, "F12", function () awful.util.spawn("xscreensaver-command --lock") end,
-              {description = "lock screen", group = "awesome"})
+              {description = "lock screen", group = "awesome"}),
+    awful.key({ modkey, "Shift"   }, "Left",
+                function (c)
+                    local curidx = awful.tag.getidx()
+                    awful.client.movetotag(client.focus.screen.tags[(curidx - 2) % 9 + 1])
+                    awful.tag.viewidx(-1)
+                end),
+    awful.key({ modkey, "Shift"   }, "Right",
+                function (c)
+                    local curidx = awful.tag.getidx()
+                    awful.client.movetotag(client.focus.screen.tags[curidx % 9 + 1])
+                    awful.tag.viewidx(1)
+                end)
 )
 
 clientkeys = awful.util.table.join(
