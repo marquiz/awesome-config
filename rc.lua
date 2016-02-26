@@ -429,10 +429,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F1",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+    -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+    --           {description = "view previous", group = "tag"}),
+    -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+    --           {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
@@ -635,7 +635,18 @@ clientkeys = awful.util.table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
-        {description = "maximize", group = "client"})
+        {description = "maximize", group = "client"}),
+    --
+    -- Additions by marquiz
+    --
+    awful.key({ modkey,           }, "Left",   function (c) awful.client.moveresize(-9, 0, 0, 0, c)     end),
+    awful.key({ modkey,           }, "Right",  function (c) awful.client.moveresize(10,  0, 0, 0, c)    end),
+    awful.key({ modkey,           }, "Down",   function (c) awful.client.moveresize(0, 10, 0, 0, c)     end),
+    awful.key({ modkey,           }, "Up",     function (c) awful.client.moveresize(0, -10, 0, 0, c)    end),
+    awful.key({ modkey, "Control" }, "Left",   function (c) awful.client.moveresize(5, 0, -10, 0, c)    end),
+    awful.key({ modkey, "Control" }, "Right",  function (c) awful.client.moveresize(-5, 0, 10, 0, c)    end),
+    awful.key({ modkey, "Control" }, "Down",   function (c) awful.client.moveresize(0, 5, 0, -10, c)    end),
+    awful.key({ modkey, "Control" }, "Up",     function (c) awful.client.moveresize(0, -5, 0, 10, c)    end)
 )
 
 -- Bind all key numbers to tags.
