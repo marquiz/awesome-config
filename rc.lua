@@ -251,10 +251,10 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+    -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+    --           {description = "view previous", group = "tag"}),
+    -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+    --           {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
@@ -429,7 +429,18 @@ clientkeys = gears.table.join(
             c.maximized_horizontal = not c.maximized_horizontal
             c:raise()
         end ,
-        {description = "(un)maximize horizontally", group = "client"})
+        {description = "(un)maximize horizontally", group = "client"}),
+    --
+    -- Additions by marquiz
+    --
+    awful.key({ modkey,           }, "Left",   function (c) awful.client.moveresize(-9, 0, 0, 0, c)     end),
+    awful.key({ modkey,           }, "Right",  function (c) awful.client.moveresize(10,  0, 0, 0, c)    end),
+    awful.key({ modkey,           }, "Down",   function (c) awful.client.moveresize(0, 10, 0, 0, c)     end),
+    awful.key({ modkey,           }, "Up",     function (c) awful.client.moveresize(0, -10, 0, 0, c)    end),
+    awful.key({ modkey, "Control" }, "Left",   function (c) awful.client.moveresize(5, 0, -10, 0, c)    end),
+    awful.key({ modkey, "Control" }, "Right",  function (c) awful.client.moveresize(-5, 0, 10, 0, c)    end),
+    awful.key({ modkey, "Control" }, "Down",   function (c) awful.client.moveresize(0, 5, 0, -10, c)    end),
+    awful.key({ modkey, "Control" }, "Up",     function (c) awful.client.moveresize(0, -5, 0, 10, c)    end)
 )
 
 -- Bind all key numbers to tags.
