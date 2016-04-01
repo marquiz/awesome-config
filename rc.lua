@@ -437,8 +437,8 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
    keydoc.group("Global Keys"),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,"Previous Tag" ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,"Next tag" ),
+    -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,"Previous Tag" ),
+    -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext,"Next tag" ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,"Clear Choice"),
     awful.key({modkey,}, "F1",keydoc.display,"Display Keymap Menu"),
 
@@ -603,7 +603,18 @@ clientkeys = awful.util.table.join(
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
-        end,"Maximize client")
+        end,"Maximize client"),
+    --
+    -- Additions by marquiz
+    --
+    awful.key({ modkey, }, "Left",  function (c) awful.client.moveresize(-10, 0, 0, 0, c) end),
+    awful.key({ modkey, }, "Right",  function (c) awful.client.moveresize(10,  0, 0, 0, c) end),
+    awful.key({ modkey, }, "Down",  function (c) awful.client.moveresize(0, 10, 0, 0, c) end),
+    awful.key({ modkey, }, "Up",  function (c) awful.client.moveresize(0, -10, 0, 0, c) end),
+    awful.key({ modkey, "Control" }, "Left",  function (c) awful.client.moveresize(5, 0, -10, 0, c) end),
+    awful.key({ modkey, "Control" }, "Right", function (c) awful.client.moveresize(-5, 0, 10, 0, c) end),
+    awful.key({ modkey, "Control" }, "Down",  function (c) awful.client.moveresize(0, 5, 0, -10, c) end),
+    awful.key({ modkey, "Control" }, "Up", function (c) awful.client.moveresize(0, -5, 0, 10, c) end)
 )
 
 -- Bind all key numbers to tags.
