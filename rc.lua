@@ -136,7 +136,7 @@ tagconf =
         {"mail", layouts[9]},
         {6, layouts[4]},
         {7, layouts[4]},
-        {"virt", layouts[10]},
+        {"virt", layouts[4]},
         {"log", layouts[4]}
     },
     {
@@ -147,7 +147,7 @@ tagconf =
         {"mail", layouts[9]},
         {6, layouts[4]},
         {7, layouts[4]},
-        {8, layouts[10]},
+        {8, layouts[4]},
         {9, layouts[4]}
     }
 }
