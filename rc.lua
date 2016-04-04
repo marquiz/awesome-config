@@ -309,7 +309,7 @@ local tagconf = {
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
         {7,         awful.layout.suit.tile.bottom},
-        {"virt",    awful.layout.suit.magnifier},
+        {"virt",    awful.layout.suit.tile.bottom},
         {"log",     awful.layout.suit.tile.bottom},
     },
     {
@@ -320,7 +320,7 @@ local tagconf = {
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
         {7,         awful.layout.suit.tile.bottom},
-        {"8",       awful.layout.suit.magnifier},
+        {"8",       awful.layout.suit.tile.bottom},
         {"9",       awful.layout.suit.tile.bottom},
     },
 }
