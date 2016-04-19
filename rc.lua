@@ -304,7 +304,7 @@ local tagconf = {
     {
         {"edit",    awful.layout.suit.tile.bottom},
         {"edit2",   awful.layout.suit.tile.bottom},
-        {"www",     awful.layout.suit.max.fullscreen},
+        {"www",     awful.layout.suit.tile.bottom},
         {"edit3",   awful.layout.suit.tile.bottom},
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
@@ -315,7 +315,7 @@ local tagconf = {
     {
         {"1",       awful.layout.suit.tile.bottom},
         {"2",       awful.layout.suit.tile.bottom},
-        {"3",       awful.layout.suit.max.fullscreen},
+        {"3",       awful.layout.suit.tile.bottom},
         {"irc",     awful.layout.suit.floating},
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
