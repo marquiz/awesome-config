@@ -131,8 +131,8 @@ tagconf =
     {
         {"edit", layouts[4]},
         {"edit2", layouts[4]},
-        {"www", layouts[4]},
         {"edit3", layouts[4]},
+        {"edit4", layouts[4]},
         {"mail", layouts[9]},
         {6, layouts[4]},
         {7, layouts[4]},
@@ -142,7 +142,7 @@ tagconf =
     {
         {1, layouts[4]},
         {2, layouts[4]},
-        {3, layouts[4]},
+        {"www", layouts[4]},
         {"irc", layouts[1]},
         {"mail", layouts[9]},
         {6, layouts[4]},
@@ -706,7 +706,7 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][3], floating = true } },
+      properties = { tag = tags[2][3], floating = true } },
     { rule = { class = "XConsole" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
