@@ -304,8 +304,8 @@ local tagconf = {
     {
         {"edit",    awful.layout.suit.tile.bottom},
         {"edit2",   awful.layout.suit.tile.bottom},
-        {"www",     awful.layout.suit.tile.bottom},
         {"edit3",   awful.layout.suit.tile.bottom},
+        {"edit4",   awful.layout.suit.tile.bottom},
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
         {7,         awful.layout.suit.tile.bottom},
@@ -315,7 +315,7 @@ local tagconf = {
     {
         {"1",       awful.layout.suit.tile.bottom},
         {"2",       awful.layout.suit.tile.bottom},
-        {"3",       awful.layout.suit.tile.bottom},
+        {"www",     awful.layout.suit.tile.bottom},
         {"irc",     awful.layout.suit.floating},
         {"mail",    awful.layout.suit.max.fullscreen},
         {6,         awful.layout.suit.tile.bottom},
@@ -763,7 +763,7 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = true }
     },
     { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "www", floating = true } },
+      properties = { screen = 2, tag = "www", floating = true } },
     { rule = { class = "XConsole" },
       properties = { screen = 1, tag = "9" } },
     { rule = { class = "Evolution" },
