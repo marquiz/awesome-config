@@ -539,6 +539,7 @@ awful.rules.rules = {
           "Blueman-manager",
           "Firefox",
           "Gitk",
+          "google-chrome",
           "Gpick",
           "Kruler",
           "libreoffice",
