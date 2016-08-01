@@ -302,26 +302,26 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 local tagconf = {
     {
-        {"edit",    awful.layout.suit.tile.bottom},
-        {"edit2",   awful.layout.suit.tile.bottom},
-        {"edit3",   awful.layout.suit.tile.bottom},
-        {"edit4",   awful.layout.suit.tile.bottom},
-        {"mail",    awful.layout.suit.max.fullscreen},
-        {6,         awful.layout.suit.tile.bottom},
-        {7,         awful.layout.suit.tile.bottom},
-        {"virt",    awful.layout.suit.tile.bottom},
-        {"log",     awful.layout.suit.tile.bottom},
+        {"edit",    awful.layout.suit.tile.bottom,      2},
+        {"edit2",   awful.layout.suit.tile.bottom,      2},
+        {"edit3",   awful.layout.suit.tile.bottom,      2},
+        {"edit4",   awful.layout.suit.tile.bottom,      2},
+        {"mail",    awful.layout.suit.max.fullscreen,   2},
+        {6,         awful.layout.suit.tile.bottom,      2},
+        {7,         awful.layout.suit.tile.bottom,      2},
+        {"virt",    awful.layout.suit.tile.bottom,      2},
+        {"log",     awful.layout.suit.tile.bottom,      2},
     },
     {
-        {"1",       awful.layout.suit.tile.bottom},
-        {"2",       awful.layout.suit.tile.bottom},
-        {"www",     awful.layout.suit.tile.bottom},
-        {"irc",     awful.layout.suit.floating},
-        {"mail",    awful.layout.suit.max.fullscreen},
-        {6,         awful.layout.suit.tile.bottom},
-        {7,         awful.layout.suit.tile.bottom},
-        {"8",       awful.layout.suit.tile.bottom},
-        {"9",       awful.layout.suit.tile.bottom},
+        {"1",       awful.layout.suit.tile.bottom,      1},
+        {"2",       awful.layout.suit.tile.bottom,      1},
+        {"www",     awful.layout.suit.tile.bottom,      1},
+        {"irc",     awful.layout.suit.floating,         1},
+        {"mail",    awful.layout.suit.max.fullscreen,   1},
+        {6,         awful.layout.suit.tile.bottom,      1},
+        {7,         awful.layout.suit.tile.bottom,      1},
+        {"8",       awful.layout.suit.tile.bottom,      1},
+        {"9",       awful.layout.suit.tile.bottom,      1},
     },
 }
 
@@ -346,7 +346,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Set number of master windows for all tags
     for _, t in pairs(s.tags) do
-        awful.tag.setnmaster(2, t)
+        awful.tag.setnmaster(tagconf[index][t.index][3], t)
     end
 
     -- Create a promptbox for each screen
