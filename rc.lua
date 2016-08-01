@@ -736,6 +736,7 @@ awful.rules.rules = {
         class = {
           "Arandr",
           "Gitk",
+          "google-chrome",
           "Gpick",
           "Kruler",
           "libreoffice",
