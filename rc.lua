@@ -707,6 +707,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Firefox" },
       properties = { tag = tags[2][3], floating = true } },
+    { rule = { class = "google-chrome" },
+      properties = { floating = true } },
     { rule = { class = "XConsole" },
       properties = { tag = tags[1][9] } },
     { rule = { class = "Evolution" },
