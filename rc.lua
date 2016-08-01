@@ -129,26 +129,26 @@ end
 tagconf =
 {
     {
-        {"edit", layouts[4]},
-        {"edit2", layouts[4]},
-        {"edit3", layouts[4]},
-        {"edit4", layouts[4]},
-        {"mail", layouts[9]},
-        {6, layouts[4]},
-        {7, layouts[4]},
-        {"virt", layouts[4]},
-        {"log", layouts[4]}
+        {"edit", layouts[4], 2},
+        {"edit2", layouts[4], 2},
+        {"edit3", layouts[4], 2},
+        {"edit4", layouts[4], 2},
+        {"mail", layouts[9], 2},
+        {6, layouts[4], 2},
+        {7, layouts[4], 2},
+        {"virt", layouts[4], 2},
+        {"log", layouts[4], 2}
     },
     {
-        {1, layouts[4]},
-        {2, layouts[4]},
-        {"www", layouts[4]},
-        {"irc", layouts[1]},
-        {"mail", layouts[9]},
-        {6, layouts[4]},
-        {7, layouts[4]},
-        {8, layouts[4]},
-        {9, layouts[4]}
+        {1, layouts[4], 1},
+        {2, layouts[4], 1},
+        {"www", layouts[4], 1},
+        {"irc", layouts[1], 1},
+        {"mail", layouts[9], 1},
+        {6, layouts[4], 1},
+        {7, layouts[4], 1},
+        {8, layouts[4], 1},
+        {9, layouts[4], 1}
     }
 }
 
@@ -156,11 +156,13 @@ tagdefs = { }
 for s = 1, #tagconf do
     tagdefs[s] = {
         name = {},
-        layout = {}
+        layout = {},
+        nmaster = {}
     }
     for t = 1, #tagconf[s] do
         tagdefs[s].name[t] = tagconf[s][t][1]
         tagdefs[s].layout[t] = tagconf[s][t][2]
+        tagdefs[s].nmaster[t] = tagconf[s][t][3]
     end
 end
 
@@ -175,7 +177,7 @@ for s = 1, screen.count() do
     end
     tags[s] = awful.tag(tagdefs[index].name, s, tagdefs[index].layout)
     for t = 1, #tags[s] do
-        awful.tag.setnmaster(2, tags[s][t])
+        awful.tag.setnmaster(tagdefs[index].nmaster[t], tags[s][t])
     end
 end
 -- }}}
