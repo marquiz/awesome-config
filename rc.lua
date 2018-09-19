@@ -302,7 +302,18 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 local tagconf = {
     {
-        {"www",     awful.layout.suit.tile.bottom,      1},
+        {"edit",    awful.layout.suit.tile.bottom,      3},
+        {"edit2",   awful.layout.suit.tile.bottom,      3},
+        {"edit3",   awful.layout.suit.tile.bottom,      3},
+        {"edit4",   awful.layout.suit.tile.bottom,      3},
+        {"mail",    awful.layout.suit.max.fullscreen,   3},
+        {6,         awful.layout.suit.tile.bottom,      3},
+        {7,         awful.layout.suit.tile.bottom,      3},
+        {"virt",    awful.layout.suit.tile.bottom,      3},
+        {"log",     awful.layout.suit.tile.bottom,      3},
+    },
+    {
+        {"irc",     awful.layout.suit.floating,         1},
         {2,         awful.layout.suit.tile.bottom,      1},
         {3,         awful.layout.suit.tile.bottom,      1},
         {4,         awful.layout.suit.tile.bottom,      1},
@@ -313,18 +324,7 @@ local tagconf = {
         {9,         awful.layout.suit.tile.bottom,      1},
     },
     {
-        {"edit",    awful.layout.suit.tile.bottom,      2},
-        {"edit2",   awful.layout.suit.tile.bottom,      2},
-        {"edit3",   awful.layout.suit.tile.bottom,      2},
-        {"edit4",   awful.layout.suit.tile.bottom,      2},
-        {"mail",    awful.layout.suit.max.fullscreen,   2},
-        {6,         awful.layout.suit.tile.bottom,      2},
-        {7,         awful.layout.suit.tile.bottom,      2},
-        {"virt",    awful.layout.suit.tile.bottom,      2},
-        {"log",     awful.layout.suit.tile.bottom,      2},
-    },
-    {
-        {"irc",     awful.layout.suit.floating,         1},
+        {"www",     awful.layout.suit.tile.bottom,      1},
         {2,         awful.layout.suit.tile.bottom,      1},
         {3,         awful.layout.suit.tile.bottom,      1},
         {4,         awful.layout.suit.tile.bottom,      1},
@@ -775,11 +775,11 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = true }
     },
     { rule = { class = "Firefox" },
-      properties = { screen = 1, tag = "www", floating = true } },
+      properties = { screen = 3, tag = "www", floating = true } },
     { rule = { class = "XConsole" },
-      properties = { screen = 2, tag = "9" } },
+      properties = { screen = 1, tag = "9" } },
     { rule = { class = "Evolution" },
-      properties = { screen = 2, tag = "mail" } },
+      properties = { screen = 1, tag = "mail" } },
 }
 -- }}}
 
