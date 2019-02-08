@@ -709,6 +709,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "rdesktop" },
       properties = { floating = true } },
+    { rule = { class = "Octave" },
+      properties = { floating = true } },
 }
 -- }}}
 
