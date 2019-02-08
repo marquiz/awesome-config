@@ -780,6 +780,8 @@ awful.rules.rules = {
       properties = { screen = 1, tag = "9" } },
     { rule = { class = "Evolution" },
       properties = { screen = 1, tag = "mail" } },
+    { rule = { class = "Octave" },
+      properties = { floating = true } },
 }
 -- }}}
 
