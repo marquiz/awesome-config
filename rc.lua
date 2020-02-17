@@ -653,11 +653,39 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   function (c) awful.client.moveresize(-9, 0, 0, 0, c)     end),
     awful.key({ modkey,           }, "Right",  function (c) awful.client.moveresize(10,  0, 0, 0, c)    end),
     awful.key({ modkey,           }, "Down",   function (c) awful.client.moveresize(0, 10, 0, 0, c)     end),
-    awful.key({ modkey,           }, "Up",     function (c) awful.client.moveresize(0, -10, 0, 0, c)    end),
-    awful.key({ modkey, "Control" }, "Left",   function (c) awful.client.moveresize(5, 0, -10, 0, c)    end),
-    awful.key({ modkey, "Control" }, "Right",  function (c) awful.client.moveresize(-5, 0, 10, 0, c)    end),
-    awful.key({ modkey, "Control" }, "Down",   function (c) awful.client.moveresize(0, 5, 0, -10, c)    end),
-    awful.key({ modkey, "Control" }, "Up",     function (c) awful.client.moveresize(0, -5, 0, 10, c)    end)
+    awful.key({ modkey,           }, "Up",     function (c) awful.client.moveresize(0, -10, 0, 0, c) end),
+    awful.key({ modkey, "Control" }, "Left",
+        function (c)
+            if c.floating then
+                awful.client.moveresize(5, 0, -10, 0, c)
+            else
+                awful.tag.incmwfact(-0.01)
+            end
+        end),
+    awful.key({ modkey, "Control" }, "Right",
+        function (c)
+            if c.floating then
+                awful.client.moveresize(-5, 0, 10, 0, c)
+            else
+                awful.tag.incmwfact( 0.01)
+            end
+        end),
+    awful.key({ modkey, "Control" }, "Down",
+        function (c)
+            if c.floating then
+                awful.client.moveresize(0, 5, 0, -10, c)
+            else
+                awful.client.incwfact( 0.01)
+            end
+        end),
+    awful.key({ modkey, "Control" }, "Up",
+        function (c)
+            if c.floating then
+                awful.client.moveresize(0, -5, 0, 10, c)
+            else
+                    awful.client.incwfact( -0.01)
+            end
+        end)
 )
 
 -- Bind all key numbers to tags.
