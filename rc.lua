@@ -313,7 +313,7 @@ local tagconf = {
         {"log",     awful.layout.suit.tile.bottom,      3},
     },
     {
-        {"irc",     awful.layout.suit.floating,         1},
+        {"irc",     awful.layout.suit.tile.bottom,      1},
         {2,         awful.layout.suit.tile.bottom,      1},
         {3,         awful.layout.suit.tile.bottom,      1},
         {4,         awful.layout.suit.tile.bottom,      1},
