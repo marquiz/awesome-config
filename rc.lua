@@ -118,6 +118,18 @@ vicious.register(myvolumewidget, vicious.widgets.volume,
     return "Vol: " .. args[1] .. "%"
   end, 2, "Master")
 
+-- Battery widget
+mybattery = wibox.widget.textbox()
+vicious.register(mybattery, function(format, warg)
+    local args = vicious.widgets.bat(format, warg)
+    if args[2] < 50 then
+        args['{color}'] = 'red'
+    else
+        args['{color}'] = 'green'
+    end
+    return args
+end, '<span foreground="${color}">bat: $2% $3h</span>', 10, 'BAT0')
+
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
@@ -229,6 +241,11 @@ awful.screen.connect_for_each_screen(function(s)
             mytextclock,
 
             myvolumewidget,
+            spacer,
+            separator,
+            spacer,
+
+            mybattery,
             spacer,
             separator,
             spacer,
