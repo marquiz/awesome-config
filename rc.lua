@@ -185,16 +185,53 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local tagconf = {
+    {
+        {1,         awful.layout.suit.tile.bottom,      2},
+        {2,         awful.layout.suit.tile.bottom,      2},
+        {"www",     awful.layout.suit.max.fullscreen,   2},
+        {4,         awful.layout.suit.tile.bottom,      2},
+        {5,         awful.layout.suit.tile.bottom,      2},
+        {6,         awful.layout.suit.tile.bottom,      2},
+        {7,         awful.layout.suit.tile.bottom,      2},
+        {8,         awful.layout.suit.tile.bottom,      2},
+        {"log",     awful.layout.suit.tile.bottom,      2},
+    },
+    {
+        {1,         awful.layout.suit.tile.bottom,      2},
+        {2,         awful.layout.suit.tile.bottom,      2},
+        {"www",     awful.layout.suit.max.fullscreen,   3},
+        {4,         awful.layout.suit.tile.bottom,      3},
+        {5,         awful.layout.suit.tile.bottom,      3},
+        {6,         awful.layout.suit.tile.bottom,      3},
+        {7,         awful.layout.suit.tile.bottom,      3},
+        {8,         awful.layout.suit.tile.bottom,      3},
+        {9,         awful.layout.suit.tile.bottom,      3},
+    }
+}
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    -- Each screen may have its own tagdefs -- if not, use the last one as default
+    index = #tagconf
+    if s.index <= #tagconf then
+        index = s.index
+    end
+    -- Just convert to a more suitable format for awful.tag() API
+    names = {}
+    layouts = {}
+    for t = 1, #tagconf[index] do
+        names[t] = tagconf[index][t][1]
+        layouts[t] = tagconf[index][t][2]
+    end
+
+    awful.tag(names, s, layouts)
 
     -- Set number of master windows for all tags
     for _, t in pairs(s.tags) do
-        awful.tag.setnmaster(2, t)
+        awful.tag.setnmaster(tagconf[index][t.index][3], t)
     end
 
     -- Create a promptbox for each screen
