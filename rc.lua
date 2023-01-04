@@ -20,6 +20,17 @@ local vicious = require("vicious")
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+-- Override awesome.quit when we're using GNOME
+_awesome_quit = awesome.quit
+awesome.quit = function()
+    if os.getenv("DESKTOP_SESSION") == "awesome-gnome" then
+       os.execute("/usr/bin/gnome-session-quit")
+       os.execute("pkill -9 gnome-session")
+    else
+    _awesome_quit()
+    end
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
