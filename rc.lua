@@ -450,7 +450,22 @@ globalkeys = gears.table.join(
                     local curidx = awful.tag.getidx()
                     awful.client.movetotag(client.focus.screen.tags[curidx % 9 + 1])
                     awful.tag.viewidx(1)
-                end)
+                end),
+    -- Backlight and volume control
+    awful.key({ }, "XF86MonBrightnessDown", function ()
+        awful.util.spawn("brightnessctl -d intel_backlight set 5%-") end),
+    awful.key({ }, "XF86MonBrightnessUp", function ()
+        awful.util.spawn("brightnessctl -d intel_backlight set +5%") end),
+    awful.key({ }, "XF86KbdBrightnessDown", function ()
+        awful.util.spawn("brightnessctl -d 'smc::kbd_backlight' set 10%-", false) end),
+    awful.key({ }, "XF86KbdBrightnessUp", function ()
+        awful.util.spawn("brightnessctl -d 'smc::kbd_backlight' set +10%", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function ()
+        awful.util.spawn("amixer sset Master 5%-", false) end),
+    awful.key({ }, "XF86AudioRaiseVolume", function ()
+        awful.util.spawn("amixer sset Master 5%+", false) end),
+    awful.key({ }, "XF86AudioMute", function ()
+        awful.util.spawn("amixer sset Master toggle") end)
 )
 
 clientkeys = gears.table.join(
