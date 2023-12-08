@@ -453,13 +453,13 @@ globalkeys = gears.table.join(
                 end),
     -- Backlight and volume control
     awful.key({ }, "XF86MonBrightnessDown", function ()
-        awful.util.spawn("brightnessctl -d intel_backlight set 5%-") end),
+        awful.util.spawn("light -T 0.5") end),
     awful.key({ }, "XF86MonBrightnessUp", function ()
-        awful.util.spawn("brightnessctl -d intel_backlight set +5%") end),
+        awful.util.spawn("light -T 2") end),
     awful.key({ }, "XF86KbdBrightnessDown", function ()
-        awful.util.spawn("brightnessctl -d 'smc::kbd_backlight' set 10%-", false) end),
+        awful.util.spawn("light -s sysfs/leds/smc::kbd_backlight -T 0.5") end),
     awful.key({ }, "XF86KbdBrightnessUp", function ()
-        awful.util.spawn("brightnessctl -d 'smc::kbd_backlight' set +10%", false) end),
+        awful.util.spawn("light -s sysfs/leds/smc::kbd_backlight -T 2") end),
     awful.key({ }, "XF86AudioLowerVolume", function ()
         awful.util.spawn("amixer sset Master 5%-", false) end),
     awful.key({ }, "XF86AudioRaiseVolume", function ()
