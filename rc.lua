@@ -60,7 +60,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_configuration_dir() .. "theme.lua")
+local theme = beautiful.get()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminator"
@@ -131,6 +132,7 @@ myvolume = volume_widget()
 mybattery = battery_widget {
     path_to_icons = "/home/mlehtone/src/arc-icon-theme/Arc/status/symbolic/",
     show_current_level = true,
+    font = theme.font,
 }
 
 
@@ -138,6 +140,7 @@ mybrightness = brightness_widget {
     path_to_icon = "/home/mlehtone/src/arc-icon-theme/Arc/status/symbolic/display-brightness-symbolic.svg",
     type = "icon_and_text",
     percentage = true,
+    font = theme.font,
 }
 
 -- Create a wibox for each screen and add it
