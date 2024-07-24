@@ -14,11 +14,13 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Extra widgets
-local vicious = require("vicious")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
+
+local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
 
 -- Override awesome.quit when we're using GNOME
 _awesome_quit = awesome.quit
@@ -123,23 +125,20 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 mytextclock = wibox.widget.textclock()
 
 -- Volume widget
-myvolumewidget = wibox.widget.textbox()
-vicious.register(myvolumewidget, vicious.widgets.volume,
-  function(widget, args)
-    return "Vol: " .. args[1] .. "%"
-  end, 2, "Master")
+myvolume = volume_widget()
 
 -- Battery widget
-mybattery = wibox.widget.textbox()
-vicious.register(mybattery, function(format, warg)
-    local args = vicious.widgets.bat(format, warg)
-    if args[2] < 50 then
-        args['{color}'] = 'red'
-    else
-        args['{color}'] = 'green'
-    end
-    return args
-end, '<span foreground="${color}">bat: $2% $3h</span>', 10, 'BAT0')
+mybattery = battery_widget {
+    path_to_icons = "/home/mlehtone/src/arc-icon-theme/Arc/status/symbolic/",
+    show_current_level = true,
+}
+
+
+mybrightness = brightness_widget {
+    path_to_icon = "/home/mlehtone/src/arc-icon-theme/Arc/status/symbolic/display-brightness-symbolic.svg",
+    type = "icon_and_text",
+    percentage = true,
+}
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -288,11 +287,8 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
 
-            myvolumewidget,
-            spacer,
-            separator,
-            spacer,
-
+            myvolume,
+            mybrightness,
             mybattery,
             spacer,
             separator,
