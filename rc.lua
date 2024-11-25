@@ -450,6 +450,16 @@ globalkeys = gears.table.join(
                     awful.client.movetotag(client.focus.screen.tags[curidx % 9 + 1])
                     awful.tag.viewidx(1)
                 end),
+    awful.key({ modkey, "Shift"   }, "Up",
+                function ()
+                    local c = client.focus
+                    c:move_to_screen()
+                end),
+    awful.key({ modkey, "Shift"   }, "Down",
+                function ()
+                    local c = client.focus
+                    c:move_to_screen(c.screen.index-1)
+                end),
     -- Backlight and volume control
     awful.key({ }, "XF86MonBrightnessDown", function ()
         awful.util.spawn("light -T 0.5") end),
