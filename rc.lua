@@ -201,9 +201,9 @@ screen.connect_signal("property::geometry", set_wallpaper)
 local tagconf = {
     {
         {1,         awful.layout.suit.tile.bottom,      2},
-        {2,         awful.layout.suit.tile.bottom,      2},
-        {"www",     awful.layout.suit.max.fullscreen,   2},
-        {4,         awful.layout.suit.tile.bottom,      2},
+        {"email",   awful.layout.suit.tile.bottom,      2},
+        {"www",     awful.layout.suit.max,              2},
+        {"chat",    awful.layout.suit.tile.bottom,      2},
         {5,         awful.layout.suit.tile.bottom,      2},
         {6,         awful.layout.suit.tile.bottom,      2},
         {7,         awful.layout.suit.tile.bottom,      2},
@@ -213,7 +213,7 @@ local tagconf = {
     {
         {1,         awful.layout.suit.tile.bottom,      2},
         {2,         awful.layout.suit.tile.bottom,      2},
-        {"www",     awful.layout.suit.max.fullscreen,   3},
+        {"www",     awful.layout.suit.max,              3},
         {4,         awful.layout.suit.tile.bottom,      3},
         {5,         awful.layout.suit.tile.bottom,      3},
         {6,         awful.layout.suit.tile.bottom,      3},
